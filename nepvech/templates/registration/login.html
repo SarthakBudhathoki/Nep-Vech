@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+    <head>
+        
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <title>Login and Registration Form </title>
+    </head>
+    <body>
+        <div class="hero">
+            <div class="form-box">
+                <div class="botton-box">
+                    <div id="btn"></div>
+                    <button type="button" class="toggle-btn" onclick="login()">Register</button>
+                    <button type="button" class="toggle-btn" onclick="register()">Login</button>    
+                </div>
+                <div class="social-icons">
+                    <img src="{% static 'img/fb.png' %}">
+                    <img src="{% static 'img/tw.png' %}">
+                    <img src="{% static 'img/gp.png' %}">
+                </div>
+                <form id="login" class="input-group" action="{% url 'signup' %}" method="post">
+                    {% csrf_token %}
+                    {% for f in signupform %}
+                    {{f}}
+                    {% endfor %}
+                    <!-- <input type="text" class="input-field" placeholder="User Id" required>
+                    <input type="text" class="input-field" placeholder="Enter Password" required> -->
+                    <input type="checkbox" class="check-box"><span>Remember Password</span>
+                    <button type="submit"class="submit-btn">Register</button>
+                </form>
+                <form id="register" class="input-group" action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
+                    {% for f in form %}
+                    {{f}}
+                    {% endfor %}
+                    <!-- <input type="text" class="input-field" placeholder="User Id" required>
+                    <input type="email" class="input-field" placeholder="Email Id" required>
+                    <input type="text" class="input-field" placeholder="Enter Password" required> -->
+                    <input type="checkbox" class="check-box"><span>I agree to the terms and conditions</span>
+                    <button type="submit"class="submit-btn">Log In</button>
+                </form>
+            </div>
+           
+        </div>
+
+        <script>
+            var x = document.getElementById("login");
+            var y = document.getElementById("register");
+            var z = document.getElementById("btn");
+
+            function register(){
+                x.style.left = "-400px";
+                y.style.left = "50px";
+                z.style.left = "110px";
+            }
+            function login(){
+                x.style.left = "50px";
+                y.style.left = "450px";
+                z.style.left = "0";
+            }
+        </script>
+  
+    </body>   
+</html>

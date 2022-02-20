@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initaial=sacle=1.0">
+        <title>NepVech</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,100&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <section class="header" >
+            <nav>
+               <a href="Index.html"><img src="{% static 'img/logo.png' %}"></a> 
+               <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+
+                {% if user.username %}
+                <ul>
+                    <li><a href="{% url 'home' %}">HOME</a></li>
+                    <li><a href="{% url 'about' %}">ABOUT</a></li>
+                    <li><a href="{% url 'service' %}">SERVICES</a></li>
+                    <li><a href="{% url 'book' %}">BOOK</a></li>
+                    <li><a href="{% url 'contact' %}">CONTACT</a></li>
+                    <li><a href="/logout">LOGOUT</a></li>
+                </ul>
+                {% else %}
+                <ul>
+                    <li><a href="{% url 'home' %}">HOME</a></li>
+                    <li><a href="{% url 'about' %}">ABOUT</a></li>
+                    <li><a href="{% url 'service' %}">SERVICES</a></li>
+                    <li><a href="{% url 'book' %}">BOOK</a></li>
+                    <li><a href="{% url 'contact' %}">CONTACT</a></li>
+                    <li><a href="{% url 'login' %}">LOGIN</a></li>
+                </ul>
+                {% endif %}
+               </div>
+               <i class="fa fa-bars" onclick="showMenu()"></i>
+
+            </nav>
+
+            <div class="text-box">
+                <h1>Nepal's Most Loved <br> Vehical Renting Service</h1>
+                <p>Providing vehical renting service in the country since 1999.<br>
+                    It is most reliable and trusted by people all over the country.
+                </p>
+                <a href="" class="hero-btn">Visit Us to know more</a>
+            </div>
+
+       
+        </section>
+
+
+
+
+        <!-----------Services-------->
+
+         <section class="service">
+            <h1>Service we offer</h1>
+            <p>Super cars Rental Service in Nepal</p>
+            <div class="row">
+                <div class="service-col">
+                    <h3>Hour Basis</h3>
+                    <p>We offer Vehicals on basis of hour. 
+                        Customers have to pay per hour.
+                        It is good for people who need cars for very short time periods.
+                    </p>
+                </div>
+                <div class="service-col">
+                    <h3>Per Day</h3>
+                    <p>Customers can also rent vehicals on the basis of day.
+                        People can Rent vehicals and pay per day which is a better value for money.
+                    </p>
+                </div>
+                <div class="service-col">
+                    <h3>Outside Valley</h3>
+                    <p>This service is for people who need vehical to go out of valley.
+                        People have to pay on the basis of day and charges are little expensive.
+                    </p>
+                </div>
+            </div>
+
+         </section>
+
+         <!-------Brands------>
+
+         <section class="brands">
+            <h1> Our cars </h1>
+            <p>We offer cars of three different brands to our customers.</p>
+
+            <div class="row">
+                <div class="brands-col">
+                    <img src="{% static 'img/car7.jpg' %}">
+                    <div class="layer">
+                        <h3>Lamborghini</h3>
+                    </div>
+                </div>
+                <div class="brands-col">
+                    <img src="{% static 'img/car8.jpg' %}">
+                    <div class="layer">
+                        <h3>Audi</h3>
+                    </div>
+                </div>
+                <div class="brands-col">
+                    <img src="{% static 'img/car9.jpg' %}">
+                    <div class="layer">
+                        <h3>Jeep</h3>
+                    </div>
+                </div>
+            </div>
+
+         </section>
+
+
+         <!-----------Facilities------>
+
+         <section class="facilities">
+             <h1>Our Facilities</h1>
+             <p>Our Showroom is located at Dillibazar, Kathmandu.<br>
+                We have lots of facilities in our car making very pleasant and enjoyable experience for our customers.
+            </p>
+            <div class="row">
+                <div class="facilities-col">
+                    <img src="{% static 'img/car10.jpg' %}">
+                    <h3>Powerful Cars</h3>
+                    <p>Drive to any terrain with our powerful cars with great suspension and offroad tires.
+                    </p>
+                </div>
+                <div class="facilities-col">
+                    <img src="{% static 'img/car11.jpg' %}">
+                    <h3>World Class Seats</h3>
+                    <p>Have a comfortable experience with our luxurious seats during your travel.
+                    </p>
+                </div>
+                <div class="facilities-col">
+                    <img src="{% static 'img/car12.jpg' %}">
+                    <h3>In-bulit Navigators</h3>
+                    <p>Our cars have in-built navigation system that can guide customers throughout the country and make sure they don't get lost.
+                    </p>
+                </div>
+            </div>
+            
+         </section>
+
+
+         <!--------------testimonials------------->
+
+        <section class="testimonials">
+            <h1>What our Customers say.</h1>
+            <p>Hear what our customers have to say about our service straight from them.</p>
+            <div class="row">
+                <div class="testimonials-col">
+                    <img src="{% static 'img/bhupu.png' %}">
+                    <div>
+                        <p>The service NepVech provides is very useful and cost effective.
+                            They provide powerful cars with great looks at a very affordable price.
+                            And their seats are the most comfortable. 
+                        </p><br>
+                        <h3>Mr. Bhupraj Tamang</h3>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    
+                </div>
+                <div class="testimonials-col">
+                    <img src="{% static 'img/hssir.png' %}">
+                    <div>
+                        <p>I have been using NepVech Service for a very long period of time. 
+                            Their in-built navigator helps me to get anywhere without getiing lost. 
+                            Their Service is Well Managed.
+                        </p><br>
+                        <h3>Mr.Hari Sharan Shrestha</h3>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                      
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!------------Call to Action----->
+
+        <section class="cta">
+            <h1>Subscribe for our services <br>
+                Anywhere from Nepal</h1>
+            <a href="" class="hero-btn">BOOK NOW</a>
+        </section>
+    
+
+        <!------------Footer----->
+
+        <section class="footer">
+            <h4>About Us</h4>
+            <p>
+                We provide supercars renting service in Nepal at an affordable price.<br>
+                Our cars are powerful and goodlooking and you can rent them on the basis of your need.
+            </p>
+            <div class="icons">
+                <i class="fa fa-facebook"></i>
+                <i class="fa fa-twitter"></i>
+                <i class="fa fa-instagram"></i>
+                <i class="fa fa-twitch"></i>
+
+            </div>
+            <p> Made with   <i class="fa fa-heart-o"></i>    By Sarthak</p>
+        </section>
+
+
+        <!---------------JavaScript for toggle Menu------->
+        <script>
+            var navLinks = document.getElementById("navLinks");
+
+            function showMenu(){
+                navLinks.style.right = '0px';
+            }
+            function hideMenu(){
+                navLinks.style.right = '-200px';
+            }
+        </script>
+    </body>
+</html>

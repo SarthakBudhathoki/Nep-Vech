@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "..\\Bookingsystemfrontend"
+		},
+		{
+			"path": "..\\Sem3rdProject\\InitialProject"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Bookingsystem"
+	}
+}
