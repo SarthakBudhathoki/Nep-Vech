@@ -17,6 +17,16 @@
                <div class="nav-links" id="navLinks">
                 <i class="fa fa-times" onclick="hideMenu()"></i>
 
+                {% if user.username %}
+                <ul>
+                    <li><a href="{% url 'home' %}">HOME</a></li>
+                    <li><a href="{% url 'about' %}">ABOUT</a></li>
+                    <li><a href="{% url 'service' %}">SERVICES</a></li>
+                    <li><a href="{% url 'book' %}">BOOK</a></li>
+                    <li><a href="{% url 'contact' %}">CONTACT</a></li>
+                    <li><a href="/logout">LOGOUT</a></li>
+                </ul>
+                {% else %}
                 <ul>
                     <li><a href="{% url 'home' %}">HOME</a></li>
                     <li><a href="{% url 'about' %}">ABOUT</a></li>
@@ -25,6 +35,7 @@
                     <li><a href="{% url 'contact' %}">CONTACT</a></li>
                     <li><a href="{% url 'login' %}">LOGIN</a></li>
                 </ul>
+                {% endif %}
                </div>
                <i class="fa fa-bars" onclick="showMenu()"></i>
 
@@ -68,12 +79,17 @@
                 </div>
                 <div class="contact-col">
 
-                    <form action="FormHandler.php" method="post">
+                    <form action="" method="post">
+                        {% csrf_token %}
                         <input type="text" name="name" placeholder="Enter your name" required>
                         <input type="email" name="email" placeholder="Enter your Email Address" required>
-                        <input type="text" name="Subject" placeholder="Enter your Subject" required>
+                        <input type="text" name="subject" placeholder="Enter your Subject" required>
                         <textarea rows="8" name="message" placeholder="Message" required></textarea>
                         <button type="submit" class="hero-btn red-btn">Send Message</button>
+
+                        {% for message in messages%}
+                        <h1>{{message}}</h1>
+                        {% endfor %}
                     </form>
                 </div>
             </div>

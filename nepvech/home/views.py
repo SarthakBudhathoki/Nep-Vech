@@ -1,4 +1,6 @@
 from django.shortcuts import render,redirect
+from django.contrib import messages
+from .forms import ContactForm,ProductForm
 from .models import *
 from registration.forms import *
 from django.contrib.auth.decorators import login_required
@@ -29,4 +31,29 @@ def buyfinal(request):
     return redirect("/buy")
 
 def contact(request):
+    if request.method=="POST":
+        form=ContactForm(request.POST)
+        form.save()
+        messages.info(request,"your message was sent")
+        return redirect("/contact")
     return render(request, 'home/contactus.html')
+
+def admin(request):
+    booking=Booking.objects.all()
+    return render(request,'home/admin.html',{'bookings':booking})
+
+def addproduct(request):
+    if request.method == "POST":
+        form = ProductForm(request.POST, request.FILES)
+        print(form)
+        if form.is_valid():
+            try:
+                print("valid")
+                form.save()
+                return redirect("/admin")
+            except:
+                print("Failed")
+    else:
+        form = ProductForm()
+        print("invalid")
+    return render(request, 'home/addproduct.html',{'form':form})
