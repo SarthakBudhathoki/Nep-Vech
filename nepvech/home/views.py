@@ -57,3 +57,7 @@ def addproduct(request):
         form = ProductForm()
         print("invalid")
     return render(request, 'home/addproduct.html',{'form':form})
+
+def viewmessage(request):
+    contacts=Contact.objects.all()
+    return render(request,"home/display.html",{'contacts':contacts})
