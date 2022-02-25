@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initaial=sacle=1.0">
+        <title>NepVech</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,100&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <section class="sub-header" >
+            <nav>
+                <a href="Index.html"><img src="{% static 'img/logo.png' %}"></a> 
+               <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+
+                {% if user.username %}
+                <ul>
+                    <li><a href="{% url 'home' %}">HOME</a></li>
+                    <li><a href="{% url 'about' %}">ABOUT</a></li>
+                    <li><a href="{% url 'service' %}">SERVICES</a></li>
+                    <li><a href="{% url 'book' %}">BOOK</a></li>
+                    <li><a href="{% url 'contact' %}">CONTACT</a></li>
+                    <li><a href="/logout">LOGOUT</a></li>
+                </ul>
+                {% else %}
+                <ul>
+                    <li><a href="{% url 'home' %}">HOME</a></li>
+                    <li><a href="{% url 'about' %}">ABOUT</a></li>
+                    <li><a href="{% url 'service' %}">SERVICES</a></li>
+                    <li><a href="{% url 'book' %}">BOOK</a></li>
+                    <li><a href="{% url 'contact' %}">CONTACT</a></li>
+                    <li><a href="{% url 'login' %}">LOGIN</a></li>
+                </ul>
+                {% endif %}
+               </div>
+               <i class="fa fa-bars" onclick="showMenu()"></i>
+
+            </nav>
+
+            <h1>Book Now</h1>
+       
+        </section>
+
+        <!-----------Book-Now Us----------->
+        <section>
+            <div class="col-md-6" style="justify-content: center; display: flex; justify:center" >
+                <div class="container-fluid contact-col">
+                {% for product in product %}
+
+                    <form method="post" action="/buyfinal">
+                        {% csrf_token %}
+                        <label>Customer Id</label>
+                        <input type="text" name="customer" value="{{user.username}}" required>
+                        <label>Product Id</label>
+                        <input type="text" name="product" value="{{product.product_id}}" required>
+                        <label>Product name</label>
+                        <input type="text" name="product_name" value="{{product.product_name}}" required>
+                        <label>Quantity</label>
+                        <input type="number" name="quantity" placeholder="Enter your Quantity" required>
+                        <label>Color</label>
+                        <input type="text" name="color" placeholder="Enter your color" required>
+                        <label>Price Per Hour(in Nprs.)</label>
+                        <input type="text" name="price " value={{product.product_price}} required>
+                        
+                        <button type="Book Now" class="hero-btn red-btn">Buy now</button>
+                    </form>
+                {% endfor %}
+                </div>
+            
+            </div>
+        </section>
+ 
+
+
+
+        <!------------Footer----->
+
+        <section class="footer">
+            <h4>About Us</h4>
+            <p>
+                We provide supercars renting service in Nepal at an affordable price.<br>
+                Our cars are powerful and goodlooking and you can rent them on the basis of your need.
+            </p>
+            <div class="icons">
+                <i class="fa fa-facebook"></i>
+                <i class="fa fa-twitter"></i>
+                <i class="fa fa-instagram"></i>
+                <i class="fa fa-linkedin"></i>
+
+            </div>
+            <p> Made with <i class="fa fa-heart-o"></i> By Sarthak</p>
+        </section>
+
+
+        <!---------------JavaScript for toggle Menu------->
+        <script>
+            var navLinks = document.getElementById("navLinks");
+
+            function showMenu(){
+                navLinks.style.right = '0px';
+            }
+            function hideMenu(){
+                navLinks.style.right = '-200px';
+            }
+        </script>
+    </body>
+</html>

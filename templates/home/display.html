@@ -1,0 +1,54 @@
+{% extends "home/adminlayout.html" %}
+{% block content %}
+                    <div class="table-responsive-md  table-responsive-sm ml-3 ">
+ 
+                        <table class="table table-bordered table-hover table-bordered table-striped">
+   
+                            <thead class="thead bg-light">
+   
+                               <tr>
+   
+
+                                   <th>Name</th>
+   
+                                   <th>Email</th>
+   
+                                   <th>Subject</th>
+   
+                                   <th>Message</th>
+                                   
+                                
+   
+                                  
+   
+                               </tr>
+   
+                            </thead>
+                            {% for contact in contacts %}
+ 
+                            <tr class="tbody">
+ 
+                                    <td>{{contact.name}}</td>
+                                    <td>{{contact.email}}</td>
+                                    <td>{{contact.subject}}</td>
+                                    <td>{{contact.message}}</td>
+                                    
+                                
+ 
+                                 <td>
+ 
+                                     |
+ 
+                                     <a href="/user/delete/{{customer.customer_id}}" style="color:red"><i class="fa fa-trash-o ml-2 fa-lg"></i></a>
+ 
+                                 </td>
+ 
+                               
+ 
+                            </tr>
+ 
+                         {% endfor %}
+ 
+                     </table>
+ 
+{% endblock %}
